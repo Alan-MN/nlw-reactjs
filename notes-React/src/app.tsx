@@ -2,6 +2,12 @@ import logo from './assets/logo-nlw-home.svg'
 import { NewNote } from './components/new_note_card'
 import { NoteCard } from './components/note_card'
 
+
+const note = {
+    date: new Date(),
+    content: 'string'
+}
+
 export function App() {
 
   return (
@@ -23,11 +29,9 @@ export function App() {
 
       <div className='grid grid-cols-3 auto-rows-[250px] gap-6'>
 
-
         <NewNote/>
-        <NoteCard/>
-        <NoteCard/>
-        <NoteCard/>
+        <NoteCard note={note}/>
+
       </div>
     </div>
   )
