@@ -1,8 +1,34 @@
+import logo from './assets/logo-nlw-home.svg'
+import { NewNote } from './components/new_note_card'
+import { NoteCard } from './components/note_card'
+
 export function App() {
 
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <div className='mx-auto max-w-6xl my-12 space-y-6'>
+
+      {/*logo*/}
+      <img src={logo} alt='NLW Expert'/>
+
+      {/*input*/}
+      <form className='w-full'>
+        <input 
+          type='text' 
+          placeholder='Busque em suas notas...'
+          className='w-full bg-transparent text-3xl font-semibold tracking-tight outline-none placeholder: text-slate-500'/>
+      </form>
+      
+      {/*Outline de divisao*/}
+      <div className='h-px bg-slate-700'/>
+
+      <div className='grid grid-cols-3 auto-rows-[250px] gap-6'>
+
+
+        <NewNote/>
+        <NoteCard/>
+        <NoteCard/>
+        <NoteCard/>
+      </div>
+    </div>
   )
 }
