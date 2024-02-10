@@ -5,21 +5,23 @@ import { X } from 'lucide-react'
 
 interface NoteCardProps{
     note:{
+        id: string
         date: Date
         content: string
     }
+    onNoteDeletion: (id: string) =>void
 }
 
-export function NoteCard(props: NoteCardProps) {
+export function NoteCard({note, onNoteDeletion}: NoteCardProps) {
     return (
         <Dialog.Root>
             <Dialog.Trigger className='rounded-md text-left flex flex-col bg-slate-800 p-5 gap-3 hover:ring-2 hover:ring-slate-600  focus-visible:ring-2 focus-visible:ring-lime-400 outline-none relative overflow-hidden'>
                 <span className='text-slate-300 text-sm font-medium'>
-                    {formatDistanceToNow(  props.note.date,  {locale: ptBR, addSuffix: true} )}
+                    {formatDistanceToNow(  note.date,  {locale: ptBR, addSuffix: true} )}
                 </span>
 
                 <p className='text-slate-400 text-sm leading-6'>
-                    {props.note.content.toString()}              
+                    {note.content.toString()}              
                 </p>
 
                 <div className=' absolute bottom-0 left-0 right-0 h-1/2 pointer-events-none bg-gradient-to-t from-black/60 to-black/0' />
@@ -36,16 +38,17 @@ export function NoteCard(props: NoteCardProps) {
             
                     <div className='flex flex-1 flex-col gap-3 p-5'>
                     <span className='text-slate-300 text-sm font-medium'>
-                        {formatDistanceToNow(  props.note.date, {locale: ptBR, addSuffix: true} )}
+                        {formatDistanceToNow(  note.date, {locale: ptBR, addSuffix: true} )}
                     </span>
                     <p className='text-slate-400 text-sm leading-6'>
-                        {props.note.content.toString()}              
+                        { note.content.toString()}              
                     </p>
                     </div> 
 
                     <button
                      type = 'button'
                      className='w-full bg-slate-800 py-4 text-center text-sm text-slate-300 outline-none font-medium group' 
+                     onClick={()=>{onNoteDeletion(note.id)}}
                     >
                         Deseja <span className='text-red-400 group-hover:underline'>apagar esta nota?</span>
                     </button>
